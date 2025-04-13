@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyrkpgh7j7j7e"
-path="res://.godot/imported/Cinderella_Unit.png-e623fb67131b0c76d9707202579be1c4.ctex"
+uid="uid://cjuvq5ylbqhnj"
+path="res://.godot/imported/Deck.png-c2a30b73c0ee5318058252df0fef89fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cinderella_Unit.png"
-dest_files=["res://.godot/imported/Cinderella_Unit.png-e623fb67131b0c76d9707202579be1c4.ctex"]
+source_file="res://Asset/Deck.png"
+dest_files=["res://.godot/imported/Deck.png-c2a30b73c0ee5318058252df0fef89fb.ctex"]
 
 [params]
 

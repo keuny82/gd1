@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://i1louq7o7t1u"
-path="res://.godot/imported/Dorosi_Unit.png-19e4736f91cb47d879b50515001e129e.ctex"
+path="res://.godot/imported/Dorosi_Unit.png-12738a7356f851c753b5c7c93e7fe982.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dorosi_Unit.png"
-dest_files=["res://.godot/imported/Dorosi_Unit.png-19e4736f91cb47d879b50515001e129e.ctex"]
+source_file="res://Asset/Dorosi_Unit.png"
+dest_files=["res://.godot/imported/Dorosi_Unit.png-12738a7356f851c753b5c7c93e7fe982.ctex"]
 
 [params]
 
