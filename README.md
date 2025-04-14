@@ -11,4 +11,6 @@
 2025sus 4월 14일
  - card 리소스 와 스크립트가 매칭되도록 수정
  - cardfilp animation 추가
- - opponent 추가   
+ - opponent 추가
+ - nikke card 하나씩 플레이 하도록 수정
+ - nikke slot, utility slot, enemy slot 구분
