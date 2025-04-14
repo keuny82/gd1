@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Script/cardmanager.gd" id="1_ah7s7"]
 [ext_resource type="PackedScene" uid="uid://bx61hxx5yc2o3" path="res://Scenes/CardSlot.tscn" id="2_nvtuq"]
 [ext_resource type="Script" path="res://Script/playerhand.gd" id="3_7ib3l"]
-[ext_resource type="Script" path="res://Script/utiltycardslot.gd" id="3_jf8m0"]
+[ext_resource type="Script" path="res://Script/utilitycardslot.gd" id="3_jf8m0"]
 [ext_resource type="PackedScene" uid="uid://dyq3log0n7can" path="res://Scenes/EnemyCardSlot.tscn" id="4_bwikw"]
 [ext_resource type="Script" path="res://Script/deck.gd" id="4_oeqp2"]
 [ext_resource type="Texture2D" uid="uid://cjuvq5ylbqhnj" path="res://Asset/Deck.png" id="4_rearr"]
