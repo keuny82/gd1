@@ -15,15 +15,95 @@ size = Vector2(174, 229)
 [node name="CardManager" type="Node2D" parent="."]
 script = ExtResource("1_ah7s7")
 
-[node name="CardSlot" parent="." instance=ExtResource("2_nvtuq")]
-position = Vector2(135, 196)
+[node name="CardSlots" type="Node2D" parent="."]
+
+[node name="CardSlot" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(680, 590)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot2" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(820, 590)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot3" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(960, 590)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot4" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1100, 590)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot5" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1240, 590)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot6" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(680, 750)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot7" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(820, 750)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot8" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(960, 750)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot9" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1100, 750)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot10" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1240, 750)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot11" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(680, 380)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot12" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(820, 380)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot13" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(960, 380)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot14" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1100, 380)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot15" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1240, 380)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot16" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(680, 220)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot17" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(820, 220)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot18" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(960, 220)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot19" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1100, 220)
+scale = Vector2(0.6, 0.6)
+
+[node name="CardSlot20" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+position = Vector2(1240, 220)
+scale = Vector2(0.6, 0.6)
 
 [node name="PlayerHand" type="Node2D" parent="."]
 script = ExtResource("3_7ib3l")
 
 [node name="Deck" type="Node2D" parent="."]
 z_index = -2
-position = Vector2(150, 890)
+position = Vector2(140, 955)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("4_oeqp2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck"]
@@ -49,3 +129,27 @@ text = "0"
 
 [node name="InputManager" type="Node2D" parent="."]
 script = ExtResource("6_4ka2f")
+
+[node name="EndTurnButton" type="Button" parent="."]
+offset_left = 200.0
+offset_top = 600.0
+offset_right = 278.0
+offset_bottom = 631.0
+text = "End Turn"
+
+[node name="OpponentDeck" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="OpponentDeck"]
+position = Vector2(1780, 125)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_rearr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OpponentDeck"]
+z_index = -2
+z_as_relative = false
+offset_left = 1712.0
+offset_top = 181.0
+offset_right = 1752.0
+offset_bottom = 221.0
+scale = Vector2(2, 2)
+text = "0"
