@@ -7,3 +7,8 @@
 
 2025년 4월 13일
  - 덱에서 카드 뽑기
+
+2025sus 4월 14일
+ - card 리소스 와 스크립트가 매칭되도록 수정
+ - cardfilp animation 추가
+ - opponent 추가   
