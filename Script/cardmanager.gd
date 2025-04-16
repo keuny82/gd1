@@ -12,7 +12,7 @@ var screen_size
 var card_being_dragged
 var is_hovered_on_card
 var player_hand_reference
-var played_moster_card_this_turn = false
+var played_nikke_card_this_turn = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,8 +39,8 @@ func finish_drag():
 	if card_slot_found and not card_slot_found.card_in_slot:
 		if card_being_dragged.card_type == card_slot_found.card_slot_type:
 			# cardtype 과 slottype 이 같은곳에 카드를 끼우면
-			if !played_moster_card_this_turn:
-				played_moster_card_this_turn = true
+			if !played_nikke_card_this_turn:
+				played_nikke_card_this_turn = true
 				card_being_dragged.scale = Vector2(CARD_SMALLER_SCALE, CARD_SMALLER_SCALE)
 				card_being_dragged.z_index = -1
 				is_hovered_on_card = false
@@ -125,3 +125,5 @@ func get_card_with_highest_z_index(cards):
 		
 	return highest_z_card
 	
+func reset_played():
+	played_nikke_card_this_turn = false

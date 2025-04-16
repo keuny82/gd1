@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://r4ufl10i6wwh"]
+[gd_scene load_steps=13 format=3 uid="uid://r4ufl10i6wwh"]
 
 [ext_resource type="Script" path="res://Script/cardmanager.gd" id="1_ah7s7"]
 [ext_resource type="PackedScene" uid="uid://bx61hxx5yc2o3" path="res://Scenes/CardSlot.tscn" id="2_nvtuq"]
 [ext_resource type="Script" path="res://Script/playerhand.gd" id="3_7ib3l"]
 [ext_resource type="Script" path="res://Script/utilitycardslot.gd" id="3_jf8m0"]
-[ext_resource type="PackedScene" uid="uid://dyq3log0n7can" path="res://Scenes/EnemyCardSlot.tscn" id="4_bwikw"]
+[ext_resource type="PackedScene" uid="uid://dyq3log0n7can" path="res://Scenes/OpponentCardSlot.tscn" id="4_bwikw"]
 [ext_resource type="Script" path="res://Script/deck.gd" id="4_oeqp2"]
 [ext_resource type="Texture2D" uid="uid://cjuvq5ylbqhnj" path="res://Asset/Deck.png" id="4_rearr"]
 [ext_resource type="Script" path="res://Script/inputmanager.gd" id="6_4ka2f"]
+[ext_resource type="Script" path="res://Script/opponenthand.gd" id="6_qqqqq"]
+[ext_resource type="Script" path="res://Script/battlemanager.gd" id="9_ha313"]
+[ext_resource type="Script" path="res://Script/opponentdeck.gd" id="10_s31ck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kktgu"]
 size = Vector2(174, 229)
@@ -19,7 +22,7 @@ script = ExtResource("1_ah7s7")
 
 [node name="CardSlots" type="Node2D" parent="."]
 
-[node name="CardSlot" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+[node name="CardSlot1" parent="CardSlots" instance=ExtResource("2_nvtuq")]
 z_index = -3
 position = Vector2(680, 590)
 scale = Vector2(0.6, 0.6)
@@ -44,78 +47,81 @@ z_index = -3
 position = Vector2(1240, 590)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot6" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+[node name="UtilityCardSlot1" parent="CardSlots" instance=ExtResource("2_nvtuq")]
 z_index = -3
 position = Vector2(680, 750)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("3_jf8m0")
 
-[node name="CardSlot7" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+[node name="UtilityCardSlot2" parent="CardSlots" instance=ExtResource("2_nvtuq")]
 z_index = -3
 position = Vector2(820, 750)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("3_jf8m0")
 
-[node name="CardSlot8" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+[node name="UtilityCardSlot3" parent="CardSlots" instance=ExtResource("2_nvtuq")]
 z_index = -3
 position = Vector2(960, 750)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("3_jf8m0")
 
-[node name="CardSlot9" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+[node name="UtilityCardSlot4" parent="CardSlots" instance=ExtResource("2_nvtuq")]
 z_index = -3
 position = Vector2(1100, 750)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("3_jf8m0")
 
-[node name="CardSlot10" parent="CardSlots" instance=ExtResource("2_nvtuq")]
+[node name="UtilityCardSlot5" parent="CardSlots" instance=ExtResource("2_nvtuq")]
 z_index = -3
 position = Vector2(1240, 750)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("3_jf8m0")
 
-[node name="CardSlot11" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentCardSlot1" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(680, 400)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot12" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentCardSlot2" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(820, 400)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot13" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentCardSlot3" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(960, 400)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot14" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentCardSlot4" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(1100, 400)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot15" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentCardSlot5" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(1240, 400)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot16" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentUtilityCardSlot1" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(680, 240)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot17" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentUtilityCardSlot2" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(820, 240)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot18" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentUtilityCardSlot3" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(960, 240)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot19" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentUtilityCardSlot4" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(1100, 240)
 scale = Vector2(0.6, 0.6)
 
-[node name="CardSlot20" parent="CardSlots" instance=ExtResource("4_bwikw")]
+[node name="OpponentUtilityCardSlot5" parent="CardSlots" instance=ExtResource("4_bwikw")]
 position = Vector2(1240, 240)
 scale = Vector2(0.6, 0.6)
 
 [node name="PlayerHand" type="Node2D" parent="."]
 script = ExtResource("3_7ib3l")
+
+[node name="OpponentHand" type="Node2D" parent="."]
+script = ExtResource("6_qqqqq")
 
 [node name="Deck" type="Node2D" parent="."]
 z_index = -2
@@ -155,9 +161,10 @@ offset_bottom = 631.0
 text = "End Turn"
 
 [node name="OpponentDeck" type="Node2D" parent="."]
+position = Vector2(1780, 125)
+script = ExtResource("10_s31ck")
 
 [node name="Sprite2D" type="Sprite2D" parent="OpponentDeck"]
-position = Vector2(1780, 125)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_rearr")
 
@@ -170,3 +177,10 @@ offset_right = 1752.0
 offset_bottom = 221.0
 scale = Vector2(2, 2)
 text = "0"
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("9_ha313")
+
+[node name="BattleTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
