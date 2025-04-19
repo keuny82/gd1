@@ -13,6 +13,7 @@ var card_being_dragged
 var is_hovered_on_card
 var player_hand_reference
 var played_nikke_card_this_turn = false
+var selected_nikke
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,35 @@ func _process(delta: float) -> void:
 		var mouse_pos = get_global_mouse_position()
 		card_being_dragged.position = mouse_pos
 		card_being_dragged.position = Vector2(clamp(mouse_pos.x, 0, screen_size.x), clamp(mouse_pos.y, 0, screen_size.y))
+
+
+func card_clicked(card):
+	if card.card_slot_card_is_in:
+		if $"../BattleManager".is_opponents_turn == false:
+			if $"../BattleManager".player_is_attacking == false:
+				if card not in $"../BattleManager".player_cards_that_attacked_this_turn:
+					if $"../BattleManager".opponent_cards_on_battlefield.size() == 0:
+						$"../BattleManager".direct_attack(card, "Player")
+						return
+					else:
+						select_card_for_battle(card)
+	else:
+		start_drag(card)
+
+
+func select_card_for_battle(card):
+	if selected_nikke:
+		if selected_nikke == card:
+			card.position.y += 20
+			selected_nikke = null
+		else:
+			selected_nikke.position.y += 20
+			selected_nikke = card
+			card.position.y -= 20
+	else:
+		selected_nikke = card
+		card.position.y -= 20
+
 
 
 func start_drag(card):
@@ -47,13 +77,20 @@ func finish_drag():
 				card_being_dragged.card_slot_card_is_in = card_slot_found
 				player_hand_reference.remove_card_from_hand(card_being_dragged)
 				card_being_dragged.position = card_slot_found.position
-				card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
 				card_slot_found.card_in_slot = true
+				card_slot_found.get_node("Area2D/CollisionShape2D").disabled = true
+				$"../BattleManager".player_cards_on_battlefield.append(card_being_dragged)
 				card_being_dragged = null				
 				return
 	player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_DRAW_SPEED)
 	card_being_dragged = null
 	
+
+func unselected_selected_nikke():
+	if selected_nikke:
+		selected_nikke.position.y += 20
+		selected_nikke = null
+
 
 func connect_card_signals(card):
 	card.connect("hovered", on_hovered_over_card)
@@ -65,18 +102,22 @@ func on_left_click_released():
 		finish_drag()
 
 func on_hovered_over_card(card):
+	if card.card_slot_card_is_in:
+		return
+		
 	if !is_hovered_on_card:
 		is_hovered_on_card = true
 		highlight_card(card, true)
 	
 func on_hovered_off_card(card):
-	if !card.card_slot_card_is_in && !card_being_dragged:
-		highlight_card(card, false)
-		var new_card_hovered = raycast_check_for_card()
-		if new_card_hovered:
-			highlight_card(new_card_hovered, true)
-		else:
-			is_hovered_on_card = false
+	if !card.defeated:
+		if !card.card_slot_card_is_in && !card_being_dragged:
+			highlight_card(card, false)
+			var new_card_hovered = raycast_check_for_card()
+			if new_card_hovered:
+				highlight_card(new_card_hovered, true)
+			else:
+				is_hovered_on_card = false
 
 
 func highlight_card(card, hovered):

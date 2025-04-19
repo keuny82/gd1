@@ -11,7 +11,7 @@ script = ExtResource("1_r2285")
 
 [node name="CardSlotImage" type="Sprite2D" parent="."]
 position = Vector2(0, 1.50001)
-scale = Vector2(1, 0.89434)
+scale = Vector2(1, 0.9)
 texture = ExtResource("1_a0i5n")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://r4ufl10i6wwh"]
+[gd_scene load_steps=14 format=3 uid="uid://r4ufl10i6wwh"]
 
 [ext_resource type="Script" path="res://Script/cardmanager.gd" id="1_ah7s7"]
 [ext_resource type="PackedScene" uid="uid://bx61hxx5yc2o3" path="res://Scenes/CardSlot.tscn" id="2_nvtuq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Script/opponenthand.gd" id="6_qqqqq"]
 [ext_resource type="Script" path="res://Script/battlemanager.gd" id="9_ha313"]
 [ext_resource type="Script" path="res://Script/opponentdeck.gd" id="10_s31ck"]
+[ext_resource type="Texture2D" uid="uid://bglxauyntmo5m" path="res://Asset/CardSlot.png" id="12_yrxjw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kktgu"]
 size = Vector2(174, 229)
@@ -154,10 +155,10 @@ text = "0"
 script = ExtResource("6_4ka2f")
 
 [node name="EndTurnButton" type="Button" parent="."]
-offset_left = 200.0
-offset_top = 600.0
-offset_right = 278.0
-offset_bottom = 631.0
+offset_left = 293.0
+offset_top = 516.0
+offset_right = 371.0
+offset_bottom = 547.0
 text = "End Turn"
 
 [node name="OpponentDeck" type="Node2D" parent="."]
@@ -182,5 +183,37 @@ text = "0"
 script = ExtResource("9_ha313")
 
 [node name="BattleTimer" type="Timer" parent="."]
+
+[node name="PlayerHealth" type="RichTextLabel" parent="."]
+offset_left = 130.0
+offset_top = 600.0
+offset_right = 170.0
+offset_bottom = 640.0
+scale = Vector2(2, 2)
+text = "0"
+
+[node name="OpponentHealth" type="RichTextLabel" parent="."]
+offset_left = 130.0
+offset_top = 430.0
+offset_right = 170.0
+offset_bottom = 470.0
+scale = Vector2(2, 2)
+text = "0"
+
+[node name="PlayerDiscard" type="Node2D" parent="."]
+position = Vector2(1500, 700)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerDiscard"]
+scale = Vector2(1, 0.9)
+texture = ExtResource("12_yrxjw")
+
+[node name="OpponentDiscard" type="Node2D" parent="."]
+position = Vector2(420, 300)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="OpponentDiscard"]
+scale = Vector2(1, 0.9)
+texture = ExtResource("12_yrxjw")
 
 [connection signal="pressed" from="EndTurnButton" to="BattleManager" method="_on_end_turn_button_pressed"]
