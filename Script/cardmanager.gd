@@ -31,14 +31,22 @@ func _process(delta: float) -> void:
 
 func card_clicked(card):
 	if card.card_slot_card_is_in:
-		if $"../BattleManager".is_opponents_turn == false:
-			if $"../BattleManager".player_is_attacking == false:
-				if card not in $"../BattleManager".player_cards_that_attacked_this_turn:
-					if $"../BattleManager".opponent_cards_on_battlefield.size() == 0:
-						$"../BattleManager".direct_attack(card, "Player")
-						return
-					else:
-						select_card_for_battle(card)
+		if $"../BattleManager".is_opponents_turn:
+			return
+		
+		if $"../BattleManager".player_is_attacking:
+			return
+		
+		if card in $"../BattleManager".player_cards_that_attacked_this_turn:
+			return
+		
+		if card.card_type != "nikke":
+			return
+		
+		if $"../BattleManager".opponent_cards_on_battlefield.size() == 0:
+			$"../BattleManager".direct_attack(card, "Player")
+		else:
+			select_card_for_battle(card)
 	else:
 		start_drag(card)
 
@@ -64,26 +72,39 @@ func start_drag(card):
 	
 	
 func finish_drag():	
-	card_being_dragged.scale = Vector2(CARD_BIGGER_SCALE, CARD_BIGGER_SCALE)
+	#card_being_dragged.scale = Vector2(CARD_BIGGER_SCALE, CARD_BIGGER_SCALE)
 	var card_slot_found = raycast_check_for_card_slot()
+	if card_slot_found == null:
+		player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_DRAW_SPEED)
+		card_being_dragged = null
+		return
+		
 	if card_slot_found and not card_slot_found.card_in_slot:
 		if card_being_dragged.card_type == card_slot_found.card_slot_type:
-			# cardtype 과 slottype 이 같은곳에 카드를 끼우면
-			if !played_nikke_card_this_turn:
-				played_nikke_card_this_turn = true
-				card_being_dragged.scale = Vector2(CARD_SMALLER_SCALE, CARD_SMALLER_SCALE)
-				card_being_dragged.z_index = -1
-				is_hovered_on_card = false
-				card_being_dragged.card_slot_card_is_in = card_slot_found
-				player_hand_reference.remove_card_from_hand(card_being_dragged)
-				card_being_dragged.position = card_slot_found.position
-				card_slot_found.card_in_slot = true
-				card_slot_found.get_node("Area2D/CollisionShape2D").disabled = true
-				$"../BattleManager".player_cards_on_battlefield.append(card_being_dragged)
-				card_being_dragged = null				
+			if card_being_dragged.card_type == "nikke" && played_nikke_card_this_turn:
+				player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_DRAW_SPEED)
+				card_being_dragged = null
 				return
-	player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_DRAW_SPEED)
-	card_being_dragged = null
+				
+			# cardtype 과 slottype 이 같은곳에 카드를 끼우면
+			card_being_dragged.scale = Vector2(CARD_SMALLER_SCALE, CARD_SMALLER_SCALE)
+			card_being_dragged.z_index = -1
+			is_hovered_on_card = false
+			card_being_dragged.card_slot_card_is_in = card_slot_found
+			player_hand_reference.remove_card_from_hand(card_being_dragged)
+			card_being_dragged.position = card_slot_found.position
+			card_slot_found.card_in_slot = true
+			card_slot_found.get_node("Area2D/CollisionShape2D").disabled = true
+			
+			if card_being_dragged.card_type == "nikke":
+				$"../BattleManager".player_cards_on_battlefield.append(card_being_dragged)
+				played_nikke_card_this_turn = true
+			else:
+				card_being_dragged.ability_script.trigger_addconsole()
+			
+			card_being_dragged = null
+			return
+	
 	
 
 func unselected_selected_nikke():
@@ -121,6 +142,9 @@ func on_hovered_off_card(card):
 
 
 func highlight_card(card, hovered):
+	if card.card_slot_card_is_in:
+		return
+		
 	if hovered:
 		card.scale = Vector2(CARD_BIGGER_SCALE, CARD_BIGGER_SCALE)
 		card.z_index = 2
