@@ -24,3 +24,6 @@ godot engine v4.3.stable.mono.official
 
 2025년 4월 19일
  - 공격 로직 추가
+
+2025년 4월 21일
+ - console 카드 추가
